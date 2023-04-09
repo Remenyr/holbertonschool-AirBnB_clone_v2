@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Flask: Adding routes """
+""" Flask: Adding default input """
 from flask import Flask
 
 
@@ -20,6 +20,13 @@ def hbnb_route():
 def c_route(text):
     text = text.replace("_", " ")
     return "C {}".format(text)
+
+
+@app.route('/python/', defaults={"text": "is cool"})
+@app.route('/python/<text>', strict_slashes=False)
+def python_route(text):
+    text = text.replace("_", " ")
+    return "Python {}".format(text)
 
 
 if __name__ == '__main__':
